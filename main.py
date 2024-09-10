@@ -6,15 +6,17 @@ st.title("Testing Instructions App")
 
 uploaded_images = st.file_uploader(label = "Upload your screenshots here.",type=['png','jpeg','jpg'],accept_multiple_files=True)
 
+if uploaded_images:
+
+    with st.expander("Preview Images",icon="⚙️"):
+
+        for img in uploaded_images:
+            st.image(img,caption = img.name)
+
 additional_info = st.text_area(label = "Additional Content (Optional)")
 
 if st.button(label = "Submit Images",):
     if uploaded_images:
-
-        with st.expander("Preview Images",icon="⚙️"):
-
-            for img in uploaded_images:
-                st.image(img,caption = img.name)
 
         # image_index = st.slider(label = "Peview : Your uploaded Images",min_value=0,max_value=len(uploaded_images)-1,value=0,step=1)
         # # Display the selected image
